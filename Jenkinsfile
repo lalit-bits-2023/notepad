@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo 'clone....'
                 git branch: 'main', url: 'https://github.com/lalit-bits-2023/notepad.git'
-                // Enter clone command here
             }
         }
         stage('Build') {

@@ -5,13 +5,13 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'clone....'
-                docker images
+                git branch: 'main', url: 'https://github.com/lalit-bits-2023/notepad.git'
             }
         }
         stage('Build') {
             steps {
                 echo 'Building...'
-                docker -v
+                // Your build steps here
             }
         }
         stage('Test') {

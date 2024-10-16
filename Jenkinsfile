@@ -1,8 +1,10 @@
 pipeline {
     agent any
     environment {
-        def imageName = 'my-docker-image4'
-        def imageTag = 'latest'
+        //def imageName = 'my-docker-image4'
+        //def imageTag = 'latest'
+        def imageName = 'lalitbits2023/scalable'
+        def imageTag = 'notepad2'
     }
 
     stages {
@@ -25,7 +27,7 @@ pipeline {
             steps {
                 script {
                     //docker.withRegistry('https://index.docker.io/v1/', 'Notepad') {
-                    docker.withRegistry('https://index.docker.io/lalitbits2023/scalable/', 'Notepad') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'Notepad') {
                         dockerImage.push()
                     }
                 }

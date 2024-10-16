@@ -6,13 +6,21 @@ pipeline {
             steps {
                 script {
                     // Define Docker image name and tag
-                    def imageName = 'my-docker-image'
+                    def imageName = 'my-docker-image1'
                     def imageTag = 'latest'
                     
                     // Build the Docker image from the Dockerfile in the current workspace
                     def dockerImage = docker.build("${imageName}:${imageTag}")
                     
                     echo "Docker image ${imageName}:${imageTag} built successfully."
+                }
+            }
+        }
+        stage('Clean up') {
+            steps {
+                script {
+                    // Optionally, remove the image from the local environment after pushing
+                    sh "docker rmi ${imageName}:${imageTag}"
                 }
             }
         }

@@ -3,8 +3,8 @@ pipeline {
     environment {
         //def imageName = 'my-docker-image4'
         //def imageTag = 'latest'
-        def imageName = 'lalitbits2023/scalable'
-        def imageTag = 'notepad2'
+        def imageName = 'lalitbits2023/notepad'
+        def imageTag = 'v1'
     }
 
     stages {
@@ -39,7 +39,7 @@ pipeline {
                     //def imageName = 'my-docker-image3'
                     //def imageTag = 'latest'
                     // Optionally, remove the image from the local environment after pushing
-                    //sleep(time: 1, unit: 'MINUTES') // Sleep for 2 minutes
+                    sleep(time: 2, unit: 'MINUTES') // Sleep for 2 minutes
                     bat "docker rmi ${imageName}:${imageTag}"
                 }
             }

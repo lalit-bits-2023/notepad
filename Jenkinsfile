@@ -14,7 +14,8 @@ pipeline {
                     //def imageTag = 'latest'
                     
                     // Build the Docker image from the Dockerfile in the current workspace
-                    def dockerImage = docker.build("${imageName}:${imageTag}")
+                    //def dockerImage = docker.build("${imageName}:${imageTag}")
+                    dockerImage = docker.build("${imageName}:${imageTag}")
                     
                     echo "Docker image ${imageName}:${imageTag} built successfully."
                 }

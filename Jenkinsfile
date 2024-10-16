@@ -6,6 +6,7 @@ pipeline {
             def imageName = 'my-docker-image4'
             def imageTag = 'latest'
         }
+
         stage('Build Docker Image') {
             steps {
                 script {

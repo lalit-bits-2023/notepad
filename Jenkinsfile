@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     //docker.withRegistry('https://index.docker.io/v1/', 'Notepad') {
-                    docker.withRegistry('https://index.docker.io/lalitbits2023/scalable', 'Notepad') {
+                    docker.withRegistry('https://index.docker.io/lalitbits2023/scalable/', 'Notepad') {
                         dockerImage.push()
                     }
                 }

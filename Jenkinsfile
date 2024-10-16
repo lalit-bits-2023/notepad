@@ -20,13 +20,22 @@ pipeline {
                 }
             }
         }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
         stage('Clean up') {
             steps {
                 script {
                     //def imageName = 'my-docker-image3'
                     //def imageTag = 'latest'
                     // Optionally, remove the image from the local environment after pushing
-                    sleep(time: 1, unit: 'MINUTES') // Sleep for 2 minutes
+                    //sleep(time: 1, unit: 'MINUTES') // Sleep for 2 minutes
                     bat "docker rmi ${imageName}:${imageTag}"
                 }
             }

@@ -2,12 +2,16 @@ pipeline {
     agent any
 
     stages {
+        script {
+            def imageName = 'my-docker-image4'
+            def imageTag = 'latest'
+        }
         stage('Build Docker Image') {
             steps {
                 script {
                     // Define Docker image name and tag
-                    def imageName = 'my-docker-image3'
-                    def imageTag = 'latest'
+                    //def imageName = 'my-docker-image3'
+                    //def imageTag = 'latest'
                     
                     // Build the Docker image from the Dockerfile in the current workspace
                     def dockerImage = docker.build("${imageName}:${imageTag}")

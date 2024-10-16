@@ -19,8 +19,8 @@ pipeline {
         stage('Clean up') {
             steps {
                 script {
-                    #def imageName = 'my-docker-image3'
-                    #def imageTag = 'latest'
+                    //def imageName = 'my-docker-image3'
+                    //def imageTag = 'latest'
                     // Optionally, remove the image from the local environment after pushing
                     bat "docker rmi ${imageName}:${imageTag}"
                 }

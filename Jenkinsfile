@@ -1,12 +1,11 @@
 pipeline {
     agent any
+    environment {
+        def imageName = 'my-docker-image4'
+        def imageTag = 'latest'
+    }
 
     stages {
-        script {
-            def imageName = 'my-docker-image4'
-            def imageTag = 'latest'
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {

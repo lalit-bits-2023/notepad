@@ -5,7 +5,7 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'clone....'
-                git branch: 'main', url: 'https://github.com/lalit-bits-2023/notepad.git'
+                checkout scm
             }
         }
         stage('Build') {

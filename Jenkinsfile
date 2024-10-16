@@ -26,6 +26,7 @@ pipeline {
                     //def imageName = 'my-docker-image3'
                     //def imageTag = 'latest'
                     // Optionally, remove the image from the local environment after pushing
+                    sleep(time: 1, unit: 'MINUTES') // Sleep for 2 minutes
                     bat "docker rmi ${imageName}:${imageTag}"
                 }
             }

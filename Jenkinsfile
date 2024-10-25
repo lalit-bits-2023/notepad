@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sleep(time: 3, unit: 'SECONDS') // Sleep for 2 minutes
+                sleep(time: 4, unit: 'SECONDS') // Sleep for 2 minutes
                 // Your build steps here
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                sleep(time: 3, unit: 'SECONDS') // Sleep for 2 minutes
+                sleep(time: 2, unit: 'SECONDS') // Sleep for 2 minutes
                 // Your deploy steps here
             }
         }

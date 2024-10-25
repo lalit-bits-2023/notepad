@@ -50,6 +50,7 @@ pipeline {
                             echo "Error checking image version. HTTP Status: ${response}"
                         }
                     }
+                    sleep(time: 2, unit: 'SECONDS') // Sleep for 2 minute
                 }
             }
         }
@@ -60,6 +61,7 @@ pipeline {
                     echo "Building Docker Image ${imageName}:v${imageTag}"
                     dockerImage = docker.build("${imageName}:v${imageTag}")
                     echo "Docker Image ${imageName}:${imageTag} built successfully."
+                    sleep(time: 2, unit: 'SECONDS') // Sleep for 2 minute
                 }
             }
         }
@@ -72,6 +74,7 @@ pipeline {
                         dockerImage.push()
                     }
                     echo "Docker Images pushed successfully."
+                    sleep(time: 2, unit: 'SECONDS') // Sleep for 2 minute
                 }
             }
         }

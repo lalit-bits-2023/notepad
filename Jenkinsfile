@@ -57,8 +57,8 @@ pipeline {
             steps {
                 script {                    
                     // Build the docker image from the dockerfile present in the current workspace
-                    echo "Building Docker Image ${imageName}:${imageTag}"
-                    dockerImage = docker.build("${imageName}:${imageTag}")
+                    echo "Building Docker Image ${imageName}:v${imageTag}"
+                    dockerImage = docker.build("${imageName}:v${imageTag}")
                     echo "Docker Image ${imageName}:${imageTag} built successfully."
                 }
             }
@@ -80,7 +80,7 @@ pipeline {
                 script {
                     // Remove the docker image from the local environment after pushing
                     echo "Removing Docker Image"
-                    bat "docker rmi ${imageName}:${imageTag}"
+                    bat "docker rmi ${imageName}:v${imageTag}"
                     echo "Docker Image removed successfully."
                 }
             }

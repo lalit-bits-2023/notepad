@@ -15,9 +15,11 @@ pipeline {
                         returnStdout: true
                     ).trim()
 
-                    if (response == 200) {
+                    response = response.split()[-1]
+
+                    if (response == "200") {
                         echo "Image version ${imageName} exists on Docker Hub."
-                    } else if (response == 404) {
+                    } else if (response == "404") {
                         echo "Image version ${imageTag} does not exist on Docker Hub."
                     } else {
                         echo "Error checking image version. HTTP Status: ${response}"

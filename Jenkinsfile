@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     def response = bat (
-                        script: "curl -s -o /dev/null -w '%{http_code}' https://hub.docker.com/v2/repositories/${imageName}/tags/${imageTag}/",
+                        script: "curl -s -o NUL -w %%{http_code} https://hub.docker.com/v2/repositories/%imageName%/tags/%imageTag%",
                         returnStdout: true
                     ).trim()
 

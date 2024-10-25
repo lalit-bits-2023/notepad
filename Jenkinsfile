@@ -10,7 +10,7 @@ pipeline {
         stage('Check Docker Image Version') {
             steps {
                 script {
-                    def response = sh (
+                    def response = bat (
                         script: "curl -s -o /dev/null -w '%{http_code}' https://hub.docker.com/v2/repositories/${imageName}/tags/${imageTag}/",
                         returnStdout: true
                     ).trim()

@@ -6,6 +6,7 @@ pipeline {
         def imageTag = 'v2'
     }
 
+    stages {
         stage('Check Docker Image Version') {
             steps {
                 script {

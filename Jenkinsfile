@@ -8,12 +8,16 @@ pipeline {
 
     stages {
         stage('Check Docker Image') {
-            def pullCommand = "docker pull ${imageName}:${imageTag}"
-            def result = sh(script: pullCommand, returnStatus: true)
-            if (result == 0) {
-                echo "Image ${imageName}:${imageTag} exists on Docker Hub."
-            } else {
-                error "Image ${imageName}:${imageTag} does not exist on Docker Hub."
+            steps {
+                script { 
+                    def pullCommand = "docker pull ${imageName}:${imageTag}"
+                    def result = sh(script: pullCommand, returnStatus: true)
+                    if (result == 0) {
+                        echo "Image ${imageName}:${imageTag} exists on Docker Hub."
+                    } else {
+                        error "Image ${imageName}:${imageTag} does not exist on Docker Hub."
+                    }
+                }
             }
         }
 

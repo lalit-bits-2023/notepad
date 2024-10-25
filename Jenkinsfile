@@ -6,16 +6,20 @@ pipeline {
         def imageTag = 'v2'
     }
 
-    stages {
-        stage('Check Docker Image') {
+        stage('Check Docker Image Version') {
             steps {
-                script { 
-                    def pullCommand = "docker pull ${imageName}:${imageTag}"
-                    def result = sh(script: pullCommand, returnStatus: true)
-                    if (result == 0) {
-                        echo "Image ${imageName}:${imageTag} exists on Docker Hub."
+                script {
+                    def response = sh (
+                        script: "curl -s -o /dev/null -w '%{http_code}' https://hub.docker.com/v2/repositories/${imageName}/tags/${imageTag}/",
+                        returnStdout: true
+                    ).trim()
+
+                    if (response == "200") {
+                        echo "Image version ${imageName} exists on Docker Hub."
+                    } else if (response == "404") {
+                        echo "Image version ${imageTag} does not exist on Docker Hub."
                     } else {
-                        error "Image ${imageName}:${imageTag} does not exist on Docker Hub."
+                        echo "Error checking image version. HTTP Status: ${response}"
                     }
                 }
             }

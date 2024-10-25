@@ -10,10 +10,10 @@ pipeline {
         stage('Check Docker Image Version') {
             steps {
                 script {
-                    def imageCounter = 2
+                    def imageCounter = 1
                     while (true) {
                         def response = bat (
-                            script: "curl -s -o NUL -w %%{http_code} https://hub.docker.com/v2/repositories/%imageName%/tags/v%imageCounter%",
+                            script: "curl -s -o NUL -w %%{http_code} https://hub.docker.com/v2/repositories/%imageName%/tags/v%imageTag%",
                             returnStdout: true
                         ).trim()
 
